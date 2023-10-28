@@ -1,0 +1,84 @@
+//npm install react styled-components
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    // Handle login logic here
+    console.log('Username:', username);
+    console.log('Password:', password);
+  };
+
+  return (
+    <LoginContainer>
+      <LoginForm onSubmit={handleLogin}>
+        <h2>Login</h2>
+        <InputField
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+        <InputField
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        <SubmitButton type="submit">Login</SubmitButton>
+      </LoginForm>
+    </LoginContainer>
+  );
+};
+
+const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+`;
+
+const InputField = styled.input`
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const SubmitButton = styled.button`
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+export default Login;
